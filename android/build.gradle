@@ -4,7 +4,7 @@ buildscript {
         minSdkVersion = 24
         compileSdkVersion = 35
         targetSdkVersion = 34
-        ndkVersion = "26.1.10909125"
+        ndkVersion = "25.1.8937393"
         kotlinVersion = "1.9.24"
     }
     repositories {
@@ -12,10 +12,21 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath("com.android.tools.build:gradle")
+        classpath("com.android.tools.build:gradle:8.5.1")
         classpath("com.facebook.react:react-native-gradle-plugin")
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin")
     }
 }
 
 apply plugin: "com.facebook.react.rootproject"
+
+project.ext.react = [
+    enableHermes: true,
+    cliPath: "node_modules/react-native/cli.js",
+    root: "$rootDir/../",
+    entryFile: "index.js"
+]
+
+tasks.withType(JavaCompile) {
+    options.compilerArgs << "-Xlint:deprecation"
+}

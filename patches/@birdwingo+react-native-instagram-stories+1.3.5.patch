@@ -1,0 +1,45 @@
+diff --git a/node_modules/@birdwingo/react-native-instagram-stories/src/components/Avatar/index.tsx b/node_modules/@birdwingo/react-native-instagram-stories/src/components/Avatar/index.tsx
+index e511f9b..66d1739 100644
+--- a/node_modules/@birdwingo/react-native-instagram-stories/src/components/Avatar/index.tsx
++++ b/node_modules/@birdwingo/react-native-instagram-stories/src/components/Avatar/index.tsx
+@@ -68,6 +68,7 @@ const StoryAvatar: FC<StoryAvatarProps> = ( {
+         <Text
+           {...nameTextProps}
+           style={[ { width: size + AVATAR_OFFSET * 2 }, nameTextStyle ]}
++          numberOfLines={1}
+         >
+           {name}
+         </Text>
+diff --git a/node_modules/@birdwingo/react-native-instagram-stories/src/components/InstagramStories/index.tsx b/node_modules/@birdwingo/react-native-instagram-stories/src/components/InstagramStories/index.tsx
+index ab743de..dde9174 100644
+--- a/node_modules/@birdwingo/react-native-instagram-stories/src/components/InstagramStories/index.tsx
++++ b/node_modules/@birdwingo/react-native-instagram-stories/src/components/InstagramStories/index.tsx
+@@ -227,7 +227,7 @@ const InstagramStories = forwardRef<InstagramStoriesPublicMethods, InstagramStor
+   return (
+     <>
+       {!hideAvatarList && (
+-      <ScrollView horizontal {...listContainerProps} {...avatarListContainerProps} contentContainerStyle={[ listContainerStyle, avatarListContainerStyle ]} testID="storiesList">
++      <ScrollView horizontal {...listContainerProps} {...avatarListContainerProps} contentContainerStyle={[ listContainerStyle, avatarListContainerStyle ]} testID="storiesList" showsHorizontalScrollIndicator={false}>
+         {data.map( ( story ) => story.renderAvatar?.()
+         ?? ( ( story.avatarSource || story.imgUrl ) && (
+           <StoryAvatar
+diff --git a/node_modules/@birdwingo/react-native-instagram-stories/src/core/constants/index.ts b/node_modules/@birdwingo/react-native-instagram-stories/src/core/constants/index.ts
+index 4ea5850..a55821e 100644
+--- a/node_modules/@birdwingo/react-native-instagram-stories/src/core/constants/index.ts
++++ b/node_modules/@birdwingo/react-native-instagram-stories/src/core/constants/index.ts
+@@ -15,12 +15,12 @@ export const CLOSE_COLOR = '#00000099';
+ export const LOADER_ID = 'gradient';
+ export const LOADER_URL = `url(#${LOADER_ID})`;
+ 
+-export const STROKE_WIDTH = 2;
++export const STROKE_WIDTH = 3;
+ 
+ export const AVATAR_SIZE = 60;
+ export const AVATAR_OFFSET = 5;
+ export const STORY_AVATAR_SIZE = 26;
+ 
+-export const STORY_ANIMATION_DURATION = 800;
++export const STORY_ANIMATION_DURATION =180;
+ export const ANIMATION_DURATION = 10000;
+-export const LONG_PRESS_DURATION = 500;
++export const LONG_PRESS_DURATION = 400;
